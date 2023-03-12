@@ -1,0 +1,25 @@
+version: '3.9'
+services:
+   server:
+    image: docker.io/gichangi/ip2_backend_image:1.0.0
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./backend/.env
+    networks:
+      - ip2-net
+    volumes:
+      - backend_vol:/var/lib/docker/volumes/backend_vol/_data
+   client:
+    image: docker.io/gichangi/ip2_client_image:1.0.0
+    ports:
+      - "3000:3000"
+    networks:
+      - ip2-net
+    depends_on:
+      - server
+    stdin_open: true
+networks:
+  ip2-net:
+volumes:
+  backend_vol:
