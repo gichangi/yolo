@@ -29,12 +29,21 @@
       apt:
         name: nodejs
         state: present
-    - name: Clone YOLO repository
+    - name: Clone YOLO Frontend repository
       git:
         repo: https://github.com/gichangi/yolo.git
         dest: /home/vagrant/yolo/
         clone: yes
+        force: yes
         update: yes
+    - name: "Install forever (to run Node.js app)."
+      npm: name=forever global=yes state=present
+
+    - name: "Check list of Node.js apps running."
+      command: forever list
+      register: forever_list
+      changed_when: false
+      
     - name: Install dependencies from lockfile
       tags: app, build, deploy
       shell: npm install
@@ -42,7 +51,7 @@
         chdir: /home/vagrant/yolo/client/
     - name: Start App
       tags: app, build, deploy
-      shell: nohup npm start &
+      shell: forever --minUptime 5000 --spinSleepTime 20000 start -c "npm start" src
       args:
         chdir: /home/vagrant/yolo/client/
 
@@ -76,12 +85,21 @@
       apt:
         name: nodejs
         state: present
-    - name: Clone YOLO repository
+    - name: Clone YOLO Backend repository
       git:
         repo: https://github.com/gichangi/yolo.git
         dest: /home/vagrant/yolo/
         clone: yes
+        force: yes
         update: yes
+    - name: "Install forever (to run Node.js app)."
+      npm: name=forever global=yes state=present
+
+    - name: "Check list of Node.js apps running."
+      command: forever list
+      register: forever_list
+      changed_when: false
+      
     - name: Install dependencies from lockfile
       tags: app, build, deploy
       shell: npm install
@@ -89,6 +107,6 @@
         chdir: /home/vagrant/yolo/backend/
     - name: Start App
       tags: app, build, deploy
-      shell: npm start &
+      shell: forever --minUptime 5000 --spinSleepTime 20000 start -c "npm start" server.js
       args:
         chdir: /home/vagrant/yolo/backend/
