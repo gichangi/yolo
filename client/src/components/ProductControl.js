@@ -78,7 +78,7 @@ class ProductControl extends Component {
     }
     
     componentDidMount(){
-        axios.get('http://localhost:5000/api/products')
+        axios.get('http://192.168.60.5:5000/api/products')
             .then(res =>{
                 console.log(res)
                 this.setState({
