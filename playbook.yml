@@ -7,7 +7,7 @@
   vars:
     NODEJS_VERSION: "14"
     volumes: "- yolovol:/var/lib/docker/volumes/yolovol/_data"
-    frontend_image: "ip2_backend_image:1.0.0"
+    frontend_image: "gichangi/ip2_backend_image:1.0.0"
     frontend_port: "3000"
   roles:
     - frontend
