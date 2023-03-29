@@ -7,7 +7,7 @@
   vars:
     NODEJS_VERSION: "14"
     volumes: "- yolovol:/var/lib/docker/volumes/yolovol/_data"
-    frontend_image: "gichangi/ip2_backend_image:1.0.0"
+    frontend_image: "gichangi/ip2_client_image:1.0.0"
     frontend_port: "3000"
   roles:
     - frontend
@@ -19,5 +19,8 @@
   remote_user: vagrant
   vars:
     NODEJS_VERSION: "14"
+    volumes: "- yolovol:/var/lib/docker/volumes/yolovol/_data"
+    backend_image: "gichangi/ip2_backend_image:1.0.0"
+    backend_port: "3500"
   roles:
     - backend

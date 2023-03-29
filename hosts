@@ -1,6 +1,5 @@
 [frontend]
 frontendserver ansible_host=192.168.60.4 ansible_port=2222 ansible_user=vagrant ansible_private_key_file=.vagrant/machines/default/virtualbox/private_key
 
-
 [backend]
 backendserver ansible_host=192.168.60.5 ansible_port=2222 ansible_user=vagrant ansible_private_key_file=.vagrant/machines/default/virtualbox/private_key

@@ -28,7 +28,7 @@ Install virtual box
     end  
 ## Ansible configuration
 - [root folder] : create playbook.yml and hosts
-    - playbook.yml provides 
+    - playbook.yml provides ansible configurations and uses roles.
     - host file provides list of hosts and ips assigned. Example below
         [frontend]
         frontendserver ansible_host=192.168.60.4 ansible_port=2222 ansible_user=vagrant ansible_private_key_file=.vagrant/machines/default/virtualbox/private_key
