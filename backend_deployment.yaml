@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: backendapp
-          image: "anishadaniels/yolobackend:v1.0.2"
+          image: "gichangi/ip2_backend_image:1.0.2"
           ports:
             - name: http
               containerPort: 5000
