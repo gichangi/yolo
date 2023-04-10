@@ -10,10 +10,10 @@ spec:
   rules:
     - http:
         paths:
-            - path: /backendservice/?(.*)
-              pathType: Prefix
-              backend:
-                service:
-                  name: backendservice
-                  port:
-                    number: 5000
+          - path: /backendservice/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: backendservice
+                port:
+                  number: 5000
