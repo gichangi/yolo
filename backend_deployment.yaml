@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    appName: yolobackend
+    serverClass : backend
+spec:
+  selector:
+    matchLabels:
+      app: backendapp
+      tier: backend
+      track: stable
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: backendapp
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - name: backendapp
+          image: "anishadaniels/yolobackend:v1.0.2"
+          ports:
+            - name: http
+              containerPort: 5000

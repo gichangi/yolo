@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend24
+  labels:
+    appName: yolofrontend
+    serverClass : frontend
+spec:
+  selector:
+    matchLabels:
+      app: frontendapp
+      tier: frontend
+      track: stable
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: frontendapp
+        tier: frontend
+        track: stable
+    spec:
+      containers:
+        - name: frontendapp
+          image: "gichangi/ip2_client_image:1.0.24"
+          ports:
+            - containerPort: 80
