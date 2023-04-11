@@ -13,8 +13,8 @@ COPY . .
 
 # Build app
 RUN npm install
-# Expose the listening port
-#EXPOSE 3000
+## Expose the listening port
+##EXPOSE 3000
 
 # Launch app with PM2
 #CMD [ "npm", "run", "build" ]
