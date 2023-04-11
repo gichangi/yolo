@@ -1,3 +1,38 @@
+## IP 4 Orchestration
+
+## Step 1: Kubernetes controllers
+- Create backend deployment and service yaml files
+    - excecute kubectl apply -f backend_deployment.yaml backend_service.yaml  
+- Create backend ingress yaml files
+    The backend ingress should map to backend service name and port
+    - excecute kubectl apply -f backend_ingress.yaml
+-Create frontend app deployment and service yaml files
+    - exceute - excecute kubectl apply -f frontend_deployment.yaml frontend_service.yaml 
+- Create statefulset and service yaml files
+    - excecute kubectl apply -f stateful_database.yaml mongo_svc.yaml
+    - updated backend deployment container to use statefulset connection string
+
+## Step 2: Update docker images
+- Update backend
+    - dockerfile with ENV CI=true to fix Crashloopbackoff error during deployment
+    - update client code to read from the statefullset env varible for the connnection string
+- Update client code
+    - Create nginx.config file and apply upstream to dynamically resolve the backend service ip
+    - Update client controller to point to '/api/*' 
+    - Update client dockerfile
+        - add  ENV CI=true to fix Crashloopbackoff error during deployment
+        - add npm build to create build files
+        - add nginx:alpine image and copy the client build files to nginx html folder
+        - replace default nginx config with the custom nginx.config file created
+        - set nginx as default entrypoint
+- build both client and backend images and push to dockerhub
+
+## Step 3: Update Kubernetes controllers with docker images
+- update both backend and frontend deployments and apply changes
+
+
+
+
 ## IP 3 Configuration Management 
 # Requirements
 Install virtual box

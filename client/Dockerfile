@@ -12,7 +12,7 @@ RUN npm install
 COPY . .
 
 # Build app
-RUN npm install
+#RUN npm install
 ## Expose the listening port
 ##EXPOSE 3000
 
