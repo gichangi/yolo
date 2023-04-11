@@ -1,7 +1,7 @@
 FROM   node:13.12.0-alpine as build
-ENV CI=true
 # Set working directory
 WORKDIR /app
+ENV CI=true
 
 COPY ./package*.json ./
 RUN npm cache clean --force
