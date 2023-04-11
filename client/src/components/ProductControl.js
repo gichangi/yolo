@@ -77,7 +77,6 @@ class ProductControl extends Component {
         };
     }
     
-    
     componentDidMount(){
         axios.get('/api/products')
             .then(res =>{
