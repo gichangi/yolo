@@ -30,6 +30,10 @@
 ## Step 3: Update Kubernetes controllers with docker images
 - update both backend and frontend deployments and apply changes
 
+## Step 4: Access site
+- To access the site run kubectl get services and copy the frontend service external ip
+
+
 
 
 
